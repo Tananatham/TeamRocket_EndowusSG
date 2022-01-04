@@ -1,25 +1,42 @@
 import Phaser, { Physics } from 'phaser'
 import TitleScreen from './scenes/TitleScreen'
+import Preloader from './scenes/Preloader'
 import Game from './scenes/Game'
 
 
 const config = {
-     width: 800,
-     height: 500,
-     type: Phaser.AUTO,
-     physics: {
+    width: 800,
+    height: 500, 
+    type: Phaser.AUTO,
+    physics: {
         default: 'arcade',
         arcade: {
             gravity: { y:0 }
-        }
-     }
+        },
+    scene: [Preloader,  Game]
+    
+    }
 }
 
-const game = new Phaser.Game (config)
+export default new Phaser.Game (
+
+    {
+        width: 800,
+        height: 500, 
+        type: Phaser.AUTO,
+        physics: {
+            default: 'arcade',
+            arcade: {
+                gravity: { y:0 }
+            },
+        scene: [Preloader,  Game],
+        scale : {
+            zoom: 2
+        }
+        
+        }
+    }
+
+    )
 
 
-game.scene.add('titlescreen', TitleScreen)
-game.scene.add('game', Game)
-
-//game.scene.start('titlescreen')
-game.scene.start('game')
